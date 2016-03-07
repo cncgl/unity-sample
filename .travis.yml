@@ -3,6 +3,8 @@ language: node_js
 node_js:
   - '5.7'
 
+sudo: false
+
 env:
   global:
     - GIT_COMMITTER_NAME=cncgl
@@ -15,7 +17,5 @@ script:
   - git init
   - git add -A
   - git commit -m 'Deploy to GitHun Pages'
-
-after_success:
   - '[ $GH_TOKEN ] && git push --force --quiet https://$GH_TOKEN@github.com/cncgl/unity-sample.git master:gh-pages 2> /dev/null'
 
