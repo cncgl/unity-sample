@@ -1,0 +1,23 @@
+language: bash
+
+sudo: false
+
+env:
+  global:
+    - GIT_COMMITTER_NAME=cncgl
+    - GIT_COMMITTER_EMAIL=concigel@gmail.com
+    - GIT_AUTHOR_NAME=cncgl
+    - GIT_AUTHOR_EMAIL=concigel@gmail.com
+    - secure: CNPCkaKwn7KdQu/QJwfea4/x5hYRmNqwTCsBQDP0U5jdZJvZMP9ymAEw4dF/P85KBjORRcu25UwSOlG9wxq+5FucgL70tRwD8vl/tAU9fJObBnvqJ65yg861BfwFHfvwJr0hMDhRSulry7STE8qKkZ8Gfomrc7WDfYhnc7/wjLGXRRh17cUzAcjH81FsmGbn8ugcKMdv8x3X1EzKXWWxzgHHDRQJykSZGSWwt2Y0WnowuCrMbqq84k+TmGv/udmYRko2HQysBobA3y/N7lsVeWGR+lDjZRCtLccraj1nU/jHqyZB0b1vLz2Uoga2o5ziIvM6T0VR0aj2Rypfrgu2RBnAALifDht0Pd7amWVwtGtonoK3rmixdnutfBojPMb5vieoCbGlBcXgECdWBo5m3zPZ5xmxnaqIAnUvX0EkCGDPgxO8B5wzursOJl113L9snzzxDAKhCJxyYAB6YdrYqMUXE/K9nHuS+N572KYQWfyXfOoYuKf5FaEqfutlJRJS7r5P17WCpWB9ZI0xe8zZLFbLGbVKEGMWdK2x+nN7JwsNZejHmwnFL1dPwGEoE8vPydWtacHtGLafu9KNQCb1icoMBvl5r2DvZ1FMxoD7CudCTEvcsnVup+N6z0P4JKfUFQFITXad9BuKrCru9Qe+I/6/zrBdeXsi6HQmQTIpe74=
+
+before_install:
+  - mkdir -p build
+  - rsync -a . build --exclude "build" --exclude ".git"
+
+script:
+  - cd build
+  - git init
+  - git add -A
+  - git commit -m 'Deploy to GitHub Pages'
+  - '[ $GH_TOKEN ] && git push --force --quiet https://$GH_TOKEN@github.com/cncgl/unity-sample.git master:gh-pages 2> /dev/null'
+
