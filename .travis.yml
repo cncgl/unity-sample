@@ -17,6 +17,8 @@ before_install:
   - mkdir -p build
   - cp -r . build
 
+install: true
+
 script:
   - cd build
   - git init
