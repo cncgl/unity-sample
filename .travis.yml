@@ -19,5 +19,5 @@ script:
   - git init
   - git add -A
   - git commit -m 'Deploy to GitHub Pages'
-  - '[ $GH_TOKEN ] && git push --force --quiet https://$GH_TOKEN@github.com/cncgl/unity-sample.git master:gh-pages 2> /dev/null'
+  - '[ $GH_TOKEN ] && git push --force https://$GH_TOKEN@github.com/cncgl/unity-sample.git master:gh-pages'
 
