@@ -12,7 +12,7 @@ env:
 
 before_install:
   - mkdir -p build
-  - cp -r . build
+  - rsync -a . build --exclude "build" --exclude ".git"
 
 script:
   - cd build
